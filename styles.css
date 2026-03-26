@@ -332,29 +332,45 @@ p {
 
 /* ── 9. RIGHT PANEL — SECTIONS ──────────────────────────────── */
 
-/* Selected Work — side by side, stacks on mobile */
-.ba-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s1);
+/* Selected Work — before/after tab toggle */
+.ba-toggle {
   margin-top: var(--s2);
 }
 
-.ba-col {
+.ba-tabs {
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  gap: var(--s2);
+  margin-bottom: var(--s1);
 }
 
-.ba-col img {
-  width: 100%;
-  display: block;
-}
-
-.ba-cap {
-  font-size: var(--size-meta);
+.ba-tab {
+  font-family: var(--face);
+  font-size: var(--size-label);
   font-weight: var(--regular);
   color: var(--label);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.01em;
+  transition: color 0.15s;
+}
+
+.ba-tab.active {
+  color: var(--ink);
+  font-weight: var(--medium);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.ba-img {
+  display: none;
+  width: 100%;
+}
+
+.ba-img.active {
+  display: block;
 }
 
 /* Tables */
@@ -408,24 +424,9 @@ p {
   flex-shrink: 0;
 }
 
-/* About — landscape illustration, full width above text */
-.photo-wrap {
-  margin-top: var(--s2);
-}
-
-.photo-wrap img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 3/2;     /* landscape desk shot / illustration */
-  object-fit: cover;
-  object-position: center;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.07);
-  /* no grayscale — illustration has its own palette */
-}
-
+/* About */
 .about-text {
-  margin-top: var(--s3);
+  margin-top: var(--s2);
 }
 
 /* Contact */

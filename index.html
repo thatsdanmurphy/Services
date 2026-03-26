@@ -6,20 +6,13 @@
   <title>Dan Murphy — Designer and Builder</title>
   <meta name="description" content="Custom websites for founders, independent professionals, and small businesses. Built by one person, start to finish.">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Open Graph — controls preview when shared on Slack, LinkedIn, iMessage, etc. -->
   <meta property="og:title" content="Dan Murphy — Designer and Builder">
   <meta property="og:description" content="Custom websites for founders, independent professionals, and small businesses. Built by one person, start to finish.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://danmurphy.services">
 
-  <!--
-    TYPEFACE: Hanken Grotesk (Google Fonts — free)
-    UPGRADE → swap --face to 'NeueHaasGroteskText', sans-serif
-    (Monotype web license, ~$150)
-  -->
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -32,7 +25,7 @@
 
     <header class="nameplate">
       <span class="np-name">Dan Murphy</span>
-      <span class="np-sep">—</span>
+      <span class="np-sep">·</span>
       <span class="np-role">Designer and Builder</span>
     </header>
 
@@ -44,7 +37,6 @@
       </h1>
       <p class="subhead">Most websites undersell the person behind them. That doesn't have to be the case.</p>
 
-      <!-- Pills: gray = taken, blue = open -->
       <div class="avail">
         <span class="slot taken" aria-hidden="true"></span>
         <span class="slot open" aria-hidden="true"></span>
@@ -65,20 +57,22 @@
 
     <div class="s">
       <span class="lbl">The Offer: A clear, simple website</span>
-      <p>If you run a business or offer services under your own name, you need a proper home for it. Not a platform someone else controls. Not a template with your photo swapped in. If you already have a site, this is about bringing it back into shape, or starting fresh if it never quite landed. Something that reflects what you do and makes it easy for people to understand and reach you.</p>
-      <p class="soft" style="margin-top: var(--s2);">Visual direction, typography, color, and layout included. E-commerce and complex systems scoped separately.</p>
+      <p>If you run a business or offer services under your own name, you need a proper home for it. Not a platform someone else controls. Not a template with your photo swapped in. Most sites like this are split across design and development, and things get diluted or never quite land.
+      </br></br>
+I design and build the site myself, end to end. One set of decisions, carried all the way through. Typography, color, layout, and structure are part of the work from the start, built directly in code. The result is something real, not a file waiting to be implemented. More complex systems can be scoped separately.</p>
     </div>
 
     <div class="s">
       <span class="lbl">Selected Work</span>
-      <div class="ba-grid">
-        <div class="ba-col">
-          <img src="assets/before.jpg" alt="Before">
-          <span class="ba-cap">Before</span>
+      <p class="soft" style="margin-top: var(--s1); margin-bottom: var(--s2);">A fractional consultant wanted to simplify and reframe their offering online.</p>
+      <div class="ba-toggle">
+        <div class="ba-tabs">
+          <button class="ba-tab active" data-target="after">After</button>
+          <button class="ba-tab" data-target="before">Before</button>
         </div>
-        <div class="ba-col">
-          <img src="assets/after.jpg" alt="After">
-          <span class="ba-cap">After</span>
+        <div class="ba-frame">
+          <img id="ba-after" class="ba-img active" src="assets/after.jpg" alt="After">
+          <img id="ba-before" class="ba-img" src="assets/before.jpg" alt="Before">
         </div>
       </div>
     </div>
@@ -88,18 +82,17 @@
       <div class="ruled">
         <div class="ruled-row">
           <span class="row-label">Week One</span>
-          <span class="row-value">Discovery, structure, and first draft</span>
+          <span class="row-value">Discovery, structure, and the first working build</span>
         </div>
         <div class="ruled-row">
           <span class="row-label">Week Two</span>
-          <span class="row-value">Feedback and refinement</span>
+          <span class="row-value">Review and refine the live site together</span>
         </div>
         <div class="ruled-row">
           <span class="row-label">Week Three</span>
-          <span class="row-value">Final polish, testing, and launch</span>
+          <span class="row-value">Final polish, cross-device testing, and launch</span>
         </div>
       </div>
-      <p class="soft" style="margin-top: var(--s2);">The core work usually takes about two weeks. We leave a third week to step back, make adjustments, and get it ready to launch.</p>
     </div>
 
     <div class="s">
@@ -108,19 +101,19 @@
         <div class="ruled-row">
           <span class="row-value">
             Individuals
-            <span class="row-sub">Product leaders, consultants, and fractional professionals. Artists and makers.</span>
+            <span class="row-sub">Fractional professionals and consultants. Artists and makers.</span>
           </span>
         </div>
         <div class="ruled-row">
           <span class="row-value">
-            Local businesses
-            <span class="row-sub">Restaurants, studios, shops, clinics, and neighborhood services</span>
+            Small businesses
+            <span class="row-sub">Professional services including therapists, coaches, and independent practices. Studios, shops, and restaurants.</span>
           </span>
         </div>
         <div class="ruled-row">
           <span class="row-value">
-            Established companies
-            <span class="row-sub">Agencies, firms, and professional practices with broader needs</span>
+            Mid-size teams
+            <span class="row-sub">Agencies, firms, and growing companies. Scope varies. Reach out and we can talk through what you need.</span>
           </span>
         </div>
       </div>
@@ -129,13 +122,9 @@
 
     <div class="s">
       <span class="lbl">About</span>
-      <!-- Landscape illustration — full width above text
-      <div class="photo-wrap">
-        <img src="assets/dan.jpg" alt="Dan Murphy at his desk"> 
-      </div>  -->
       <div class="about-text">
-        <p>For fifteen years I worked at Fidelity, Accenture, and Motional designing products people rely on every day. Today I work independently, helping founders, small businesses, artists, and makers create a proper home for their work on the internet.</p>
-        <p style="margin-top: 0.65rem;">One person, start to finish. No handoffs, no surprises.</p>
+        <p>For fifteen years I worked at Fidelity, Accenture, and Motional designing software products people rely on every day. Today I work independently, building websites and digital products for founders, small businesses, artists, and makers.</p>
+        <p style="margin-top: 0.65rem;">One person. Design and code, start to finish. No handoffs, no surprises.</p>
       </div>
     </div>
 
@@ -152,6 +141,18 @@
   </main>
 
 </div>
+
+<script>
+  document.querySelectorAll('.ba-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.ba-img').forEach(img => img.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('ba-' + target).classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
