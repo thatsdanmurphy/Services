@@ -11,61 +11,45 @@
 
 :root {
 
-  /* Typeface */
   --face: 'Hanken Grotesk', 'Neue Haas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  /* Color */
-  --ink:       #0A0A0A;              /* near-black — primary text */
-  --label:     #555555;              /* mid-gray — 7.4:1 on white, WCAG AA ✓ */
-  --faint:     #F4F4F4;              /* light fill — placeholder backgrounds */
-  --paper:     #FAFAFA;              /* right panel — paper quality */
-  --rule:      #D8D8D8;              /* left-rule on tables */
-  --divide:    #EFEFEF;              /* row separators */
-  --pill:      #1A3A6B;              /* availability — only non-neutral */
-  --pill-bg:   rgba(26,58,107,0.07); /* ghost blue for availability pill */
+  --ink:       #0A0A0A;
+  --label:     #555555;              /* 7.4:1 on white — WCAG AA ✓ */
+  --faint:     #F4F4F4;
+  --paper:     #FAFAFA;
+  --rule:      #D8D8D8;
+  --divide:    #EFEFEF;
+  --pill:      #1A3A6B;
+  --pill-bg:   rgba(26,58,107,0.07);
 
   /* ── TYPE SCALE ─────────────────────────────────────────────
-     Rationale (type designer + accessibility)
-     ─────────────────────────────────────────
-     Browser default body is 16px — established through decades of readability
-     research. 15px is common but shaves off legibility for older eyes and
-     low-acuity users. We use 16px as the body floor.
-
-     APCA (draft WCAG 3.0) research shows below 14px, even high-contrast text
-     loses significant readability for ~20% of users (age-related, mild blur,
-     motion). 14px is the practical minimum for any content-bearing text.
-
-     13px is acceptable for purely decorative/supporting text (footer copyright,
-     image captions) on desktop at arm's length. On mobile — where the screen
-     is closer but the rendering DPI is higher — 14px is the floor.
-
-     11px is not defensible for any user-facing text in 2026.
+     16px body — browser default, decades of readability research.
+     14px floor for all content-bearing text.
+     13px for decorative/supporting text on desktop only.
+     Mobile overrides --size-meta to 14px (see mobile query).
   */
-  --size-meta:    13px;    /* footer, captions, availability — was 11px */
-  --size-label:   14px;    /* section labels — was 13px */
-  --size-small:   14px;    /* footnotes — was 13px, now matches label floor */
-  --size-body:    16px;    /* working text — was 15px, now browser default */
-  --size-sub:     15px;    /* left panel subhead — slightly softer than body */
-  --size-lede:    1.25rem; /* opening statement (~20px) — was 1.2rem */
-  --size-price:   1.75rem; /* pricing numbers (~28px) */
-  --size-display: 2.75rem; /* headline (~44px) */
+  --size-meta:    13px;
+  --size-label:   14px;
+  --size-small:   14px;
+  --size-body:    16px;
+  --size-sub:     15px;
+  --size-lede:    1.25rem;
+  --size-price:   1.75rem;
+  --size-display: 2.75rem;
 
-  /* Weight */
   --thin:     300;
   --regular:  400;
   --medium:   500;
   --bold:     600;
 
-  /* Spacing — 8px base grid */
-  --s1:  0.5rem;   /*  8px */
-  --s2:  1rem;     /* 16px */
-  --s3:  1.5rem;   /* 24px */
-  --s4:  2rem;     /* 32px */
-  --s5:  2.5rem;   /* 40px */
-  --s6:  3rem;     /* 48px */
-  --s7:  3.5rem;   /* 56px */
+  --s1:  0.5rem;
+  --s2:  1rem;
+  --s3:  1.5rem;
+  --s4:  2rem;
+  --s5:  2.5rem;
+  --s6:  3rem;
+  --s7:  3.5rem;
 
-  /* Layout */
   --left-width:  380px;
   --max-width:   1140px;
 }
@@ -73,15 +57,9 @@
 
 /* ── 2. RESET + BASE ───────────────────────────────────────── */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: #fff;
@@ -101,11 +79,9 @@ p {
 }
 
 
-/* ── 3. DESKTOP — TWO-PANEL LAYOUT ────────────────────────── */
-
-/* At viewports wider than the max-width container, body shows on both sides.
-   Gradient splits exactly at the panel divider:
-   50% (container center) − 570px (half of 1140px) + 380px (left width) = 50% − 190px */
+/* ── 3. WIDE VIEWPORT BLEED FIX ─────────────────────────────
+   At viewports > max-width, body shows on both sides.
+   Gradient splits at panel divider: 50% − (1140/2 − 380) = 50% − 190px */
 @media (min-width: 1140px) {
   body {
     background: linear-gradient(
@@ -116,12 +92,12 @@ p {
   }
 }
 
+
+/* ── 4. DESKTOP — TWO-PANEL ─────────────────────────────────── */
+
 @media (min-width: 860px) {
 
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
+  html, body { height: 100%; overflow: hidden; }
 
   .layout {
     display: grid;
@@ -165,20 +141,18 @@ p {
 }
 
 
-/* ── 4. MOBILE — SINGLE COLUMN ─────────────────────────────── */
+/* ── 5. MOBILE — SINGLE COLUMN ─────────────────────────────── */
 
 @media (max-width: 859px) {
 
-  /* Mobile type floor: 14px minimum for all text — no exceptions */
   :root { --size-meta: 14px; }
 
   .layout { display: block; }
 
   .left {
-    padding: 0 var(--s3);
+    padding: 0 var(--s3) var(--s4);
     background: #fff;
     border-bottom: 1px solid var(--divide);
-    padding-bottom: var(--s4);
   }
 
   .right {
@@ -191,14 +165,13 @@ p {
 }
 
 
-/* ── 5. NAMEPLATE — single stroke, one line ────────────────── */
+/* ── 6. NAMEPLATE — one line ────────────────────────────────── */
 
 .nameplate {
   padding: var(--s5) 0 var(--s4);
   flex-shrink: 0;
   display: flex;
   align-items: baseline;
-  gap: 0;
 }
 
 @media (max-width: 859px) {
@@ -227,7 +200,7 @@ p {
 }
 
 
-/* ── 6. LEFT PANEL ─────────────────────────────────────────── */
+/* ── 7. LEFT PANEL ──────────────────────────────────────────── */
 
 .headline {
   font-size: var(--size-display);
@@ -239,15 +212,11 @@ p {
 }
 
 @media (max-width: 859px) {
-  .headline {
-    font-size: 2.4rem;
-    padding: var(--s5) 0 0;
-    margin-bottom: var(--s3);
-  }
+  .headline { font-size: 2.4rem; padding: var(--s5) 0 0; margin-bottom: var(--s3); }
 }
 
 .subhead {
-  font-size: var(--size-sub);   /* 15px — one step softer than body, not smaller */
+  font-size: var(--size-sub);
   font-weight: var(--regular);
   color: var(--ink);
   line-height: 1.65;
@@ -259,22 +228,22 @@ p {
   .subhead { max-width: 100%; }
 }
 
-/* Availability pill — ghost blue, dot indicators */
+/* Availability pill */
 .avail {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
   background: var(--pill-bg);
   color: var(--pill);
   font-size: var(--size-meta);
   font-weight: var(--medium);
   letter-spacing: 0.01em;
-  padding: 0.3rem 0.65rem 0.3rem 0.5rem;
-  border-radius: 1.5rem;
-  margin-bottom: var(--s2);
+  padding: 0.5rem 1.1rem 0.5rem 0.85rem;
+  border-radius: 2rem;
+  margin-bottom: var(--s3);
 }
 
-/* Slot pill indicators — easier to read than dots */
+/* Slot pills */
 .slot {
   width: 16px;
   height: 6px;
@@ -282,10 +251,9 @@ p {
   flex-shrink: 0;
 }
 
-.slot.open   { background: var(--pill); }
-.slot.taken  { background: var(--rule); }
+.slot.open  { background: var(--pill); }
+.slot.taken { background: var(--rule); }
 
-/* CTA */
 .cta {
   font-size: var(--size-body);
   font-weight: var(--regular);
@@ -293,7 +261,6 @@ p {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  Margin-left: .2rem;
   display: inline;
 }
 
@@ -302,9 +269,8 @@ p {
 }
 
 
-/* ── 7. RIGHT PANEL — SHARED ───────────────────────────────── */
+/* ── 8. RIGHT PANEL — SHARED ────────────────────────────────── */
 
-/* Section labels */
 .lbl {
   font-size: var(--size-label);
   font-weight: var(--bold);
@@ -314,7 +280,6 @@ p {
   margin-bottom: var(--s1);
 }
 
-/* Lede */
 .lede {
   font-size: var(--size-lede);
   font-weight: var(--medium);
@@ -323,7 +288,6 @@ p {
   color: var(--ink);
 }
 
-/* Section subheading */
 .s-head {
   font-size: var(--size-body);
   font-weight: var(--medium);
@@ -332,7 +296,6 @@ p {
   margin-bottom: var(--s1);
 }
 
-/* Footnote */
 .fn {
   font-size: var(--size-small);
   font-weight: var(--regular);
@@ -341,7 +304,6 @@ p {
   line-height: 1.6;
 }
 
-/* Soft paragraph */
 .soft {
   font-size: var(--size-body);
   font-weight: var(--regular);
@@ -349,11 +311,7 @@ p {
   line-height: 1.65;
 }
 
-/* List with slash markers */
-.list {
-  list-style: none;
-  margin-top: var(--s2);
-}
+.list { list-style: none; margin-top: var(--s2); }
 
 .list li {
   font-size: var(--size-body);
@@ -372,9 +330,9 @@ p {
 }
 
 
-/* ── 8. RIGHT PANEL — SECTIONS ─────────────────────────────── */
+/* ── 9. RIGHT PANEL — SECTIONS ──────────────────────────────── */
 
-/* Selected Work */
+/* Selected Work — side by side, stacks on mobile */
 .ba-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -391,9 +349,6 @@ p {
 .ba-col img {
   width: 100%;
   display: block;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.08),
-    0 2px 8px rgba(0,0,0,0.08);
 }
 
 .ba-cap {
@@ -402,27 +357,13 @@ p {
   color: var(--label);
 }
 
-.ba-ph {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--faint);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--size-meta);
-  font-weight: var(--regular);
-  color: var(--label);
-}
-
-/* Left-rule container — What to Expect + Pricing */
+/* Tables */
 .ruled {
   margin-top: var(--s2);
   border-left: 2px solid var(--rule);
   padding-left: var(--s3);
 }
 
-/* Unified row */
 .ruled-row {
   display: flex;
   justify-content: space-between;
@@ -431,9 +372,7 @@ p {
   padding: 0.7rem 0;
 }
 
-.ruled-row + .ruled-row {
-  border-top: 1px solid var(--divide);
-}
+.ruled-row + .ruled-row { border-top: 1px solid var(--divide); }
 
 .row-label {
   font-size: var(--size-body);
@@ -450,7 +389,6 @@ p {
   flex: 1;
 }
 
-/* Same size as tier name — color does the separating work, not size */
 .row-sub {
   display: block;
   font-size: var(--size-body);
@@ -460,7 +398,6 @@ p {
   line-height: 1.5;
 }
 
-/* Price number */
 .row-price {
   font-size: var(--size-price);
   font-weight: var(--thin);
@@ -471,38 +408,24 @@ p {
   flex-shrink: 0;
 }
 
-/* About */
-.about-grid {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: var(--s3);
-  align-items: start;
+/* About — landscape illustration, full width above text */
+.photo-wrap {
   margin-top: var(--s2);
 }
 
 .photo-wrap img {
   width: 100%;
   display: block;
-  aspect-ratio: 2/3;
+  aspect-ratio: 3/2;     /* landscape desk shot / illustration */
   object-fit: cover;
-  object-position: top;
-  filter: grayscale(15%);
+  object-position: center;
   border-radius: 3px;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,0.08),
-    0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.07);
+  /* no grayscale — illustration has its own palette */
 }
 
-.photo-ph {
-  width: 100%;
-  aspect-ratio: 2/3;
-  background: var(--faint);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--size-meta);
-  color: var(--label);
+.about-text {
+  margin-top: var(--s3);
 }
 
 /* Contact */
@@ -520,14 +443,6 @@ p {
   text-decoration: none;
 }
 
-.links .loc {
-  font-size: var(--size-meta);
-  font-weight: var(--regular);
-  color: var(--label);
-  margin-top: var(--s1);
-}
-
-/* Footer */
 footer {
   font-size: var(--size-meta);
   font-weight: var(--regular);
@@ -536,12 +451,8 @@ footer {
 }
 
 
-/* ── 9. MOBILE EDGE CASES ──────────────────────────────────── */
+/* ── 10. MOBILE EDGE CASES ──────────────────────────────────── */
 
 @media (max-width: 480px) {
-  .ba-grid {
-    grid-template-columns: 1fr;
-    row-gap: var(--s3);
-  }
-  .about-grid { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; row-gap: var(--s3); }
 }
