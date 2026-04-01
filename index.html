@@ -143,16 +143,19 @@ I design and build the site myself, end to end. One set of decisions, carried al
 </div>
 
 <script>
-  document.querySelectorAll('.ba-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.ba-img').forEach(img => img.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('ba-' + target).classList.add('active');
+    document.querySelectorAll('.ba-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        document.querySelectorAll('.ba-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.ba-img').forEach(img => img.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('ba-' + target).classList.add('active');
+      });
     });
-  });
-</script>
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
 
 </body>
 </html>
